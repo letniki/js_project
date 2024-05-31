@@ -1,11 +1,11 @@
 let postId=new URL(location.href).searchParams.get('id');
 let postDetailsContainer=document.createElement('div');
 
-        let divWrapper=document.createElement('div');
-        let h1UserId=document.createElement('h1');
+let h1UserId=document.createElement('h1');
         let h2PostId=document.createElement('h2');
         let h3PostTitle=document.createElement('h3');
         let h3PostBody=document.createElement('h3');
+let block=document.createElement('div');
 async function foo() {
     let post=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         .then(value => value.json())
@@ -17,16 +17,11 @@ async function foo() {
 
             postDetailsContainer.append(h1UserId, h2PostId, h3PostTitle, h3PostBody);
             postDetailsContainer.classList.add('wrapper');
-            let block=document.createElement('div');
+
             block.classList.add('block');
             block.appendChild(postDetailsContainer)
             document.body.appendChild(block);
 
-
-
-    //
-    //
-    //
     //
 
    let comments= await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
@@ -35,16 +30,14 @@ async function foo() {
             let commentsContainer = document.createElement('div');
             commentsContainer.classList.add('wrapContainer');
             for (const comment of comments) {
-                console.log(comment);
+
                 let commentDiv = document.createElement('div');
                 commentDiv.classList.add('comment');
-                commentDiv.innerHTML = `
-                                <p><strong>Comment Name: ${comment.name}</strong></p>
+                commentDiv.innerHTML = `<p><strong>Comment Name: ${comment.name}</strong></p>
                                 <p><b>Comment Body:</b> ${comment.body}</p>
                                 <p><b>Comment ID:</b> ${comment.id}</p>
                                 <p><b>Email:</b> ${comment.email}</p>
-                                <p><b>Post ID:</b> ${comment.postId}</p>
-                            `;
+                                <p><b>Post ID:</b> ${comment.postId}</p>`;
                 commentsContainer.appendChild(commentDiv);
             }
             document.body.appendChild(commentsContainer);

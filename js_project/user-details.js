@@ -42,8 +42,12 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
     let postButton=document.createElement('button');
     postButton.classList.add('postButton');
     postButton.innerText='post of current user';
+    let userPostsContainer = document.createElement('div');
+    userPostsContainer.classList.add('display');
         postButton.addEventListener('click', () => {
-            let userPostsContainer = document.createElement('div');
+
+            userPostsContainer.classList.toggle('display');
+            if(!userPostsContainer.classList.contains('display')){
                 fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
                     .then(response => response.json())
                     .then(posts => {
@@ -63,24 +67,17 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
                             }
                             userPostsContainer.classList.add('userPostsContainer');
                             document.body.appendChild(userPostsContainer);
-                            postButton.setAttribute('disabled', 'disabled');
                     })
-            // let clear=document.createElement('button');
-            // clear.addEventListener('click', (e) =>{
-            //     e.preventDefault();
-            //     localStorage.clear();
-            //     location.reload();
-            // })
-            // document.body.appendChild(clear);
-            // userPostsContainer.classList.toggle('display');
+            }else{
+                userPostsContainer.innerText='';
+            }
         })
-
     let block=document.createElement('div');
         block.classList.add('block');
         block.appendChild(ul);
 
-    let fatherDiv=document.createElement('div');
-    fatherDiv.classList.add('fatherDiv');
-    fatherDiv.appendChild(block);
-    document.body.append(fatherDiv, postButton);
+    let container=document.createElement('div');
+    container.classList.add('container');
+    container.appendChild(block);
+    document.body.append(container, postButton);
 })
