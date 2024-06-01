@@ -2,11 +2,11 @@ let postId=new URL(location.href).searchParams.get('id');
 let postDetailsContainer=document.createElement('div');
 
 let h1UserId=document.createElement('h1');
-        let h2PostId=document.createElement('h2');
-        let h3PostTitle=document.createElement('h3');
-        let h3PostBody=document.createElement('h3');
+let h2PostId=document.createElement('h2');
+let h3PostTitle=document.createElement('h3');
+let h3PostBody=document.createElement('h3');
 let block=document.createElement('div');
-async function foo() {
+async function commentsOfPostCreator() {
     let post=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         .then(value => value.json())
 
@@ -22,8 +22,6 @@ async function foo() {
             block.appendChild(postDetailsContainer)
             document.body.appendChild(block);
 
-    //
-
    let comments= await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
         .then(value => value.json())
 
@@ -33,7 +31,7 @@ async function foo() {
 
                 let commentDiv = document.createElement('div');
                 commentDiv.classList.add('comment');
-                commentDiv.innerHTML = `<p><strong>Comment Name: ${comment.name}</strong></p>
+                commentDiv.innerHTML = `<p><b>Comment Name: ${comment.name}</b></p>
                                 <p><b>Comment Body:</b> ${comment.body}</p>
                                 <p><b>Comment ID:</b> ${comment.id}</p>
                                 <p><b>Email:</b> ${comment.email}</p>
@@ -42,4 +40,4 @@ async function foo() {
             }
             document.body.appendChild(commentsContainer);
 }
-foo();
+commentsOfPostCreator();
