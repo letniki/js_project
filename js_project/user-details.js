@@ -42,7 +42,6 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
     let userPostsContainer = document.createElement('div');
     userPostsContainer.classList.add('display');
         postButton.addEventListener('click', () => {
-
             userPostsContainer.classList.toggle('display');
             if(!userPostsContainer.classList.contains('display')){
                 fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
@@ -60,7 +59,6 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
                                 divPost.appendChild(postDetailsButton);
                                 divPost.classList.add('divPost');
                                 userPostsContainer.appendChild(divPost);
-
                             }
                             userPostsContainer.classList.add('userPostsContainer');
                             document.body.appendChild(userPostsContainer);
