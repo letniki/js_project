@@ -2,8 +2,6 @@ let userId=new URL(location.href).searchParams.get('id');
 fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 .then(value => value.json())
 .then(user=>{
-
-
     let ul=document.createElement('ul');
     let id=document.createElement('li');
     let name=document.createElement('li');
