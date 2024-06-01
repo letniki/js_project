@@ -9,7 +9,6 @@ let block=document.createElement('div');
 async function commentsOfPostCreator() {
     let post=await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         .then(value => value.json())
-
             h1UserId.innerText = `UserID: ${post.userId}`;
             h2PostId.innerText = `Post ID: ${post.id}`;
             h3PostTitle.innerText = `Post Title: ${post.title}`;
@@ -21,14 +20,11 @@ async function commentsOfPostCreator() {
             block.classList.add('block');
             block.appendChild(postDetailsContainer)
             document.body.appendChild(block);
-
    let comments= await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
         .then(value => value.json())
-
             let commentsContainer = document.createElement('div');
             commentsContainer.classList.add('wrapContainer');
             for (const comment of comments) {
-
                 let commentDiv = document.createElement('div');
                 commentDiv.classList.add('comment');
                 commentDiv.innerHTML = `<p><b>Comment Name: ${comment.name}</b></p>

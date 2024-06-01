@@ -11,7 +11,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
         let h3UserName=document.createElement('h3');
         h3UserName.innerText=`Name: ${user.name}`;
         let button=document.createElement('button');
-        button.innerText='more info about user';
+        button.innerText='More info about user';
         button.onclick=function(){
             location.href=`user-details.html?id=${user.id}`;
         }
