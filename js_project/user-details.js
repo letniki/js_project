@@ -1,5 +1,4 @@
 let userId=new URL(location.href).searchParams.get('id');
-let container=document.createElement('div');
 fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 .then(value => value.json())
 .then(user=>{
@@ -41,7 +40,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 
     let postButton=document.createElement('button');
     postButton.classList.add('postButton');
-    postButton.innerText='post of current user';
+    postButton.innerText='Post of current user';
     let userPostsContainer = document.createElement('div');
     userPostsContainer.classList.add('display');
         postButton.addEventListener('click', () => {
@@ -56,7 +55,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
                                 divPost.innerHTML = `<p><b>Title:</b> ${post.title}</p>`;
                                 let postDetailsButton = document.createElement('button');
                                 postDetailsButton.classList.add('postDetailsButton');
-                                postDetailsButton.innerText = 'more info about post';
+                                postDetailsButton.innerText = 'More info about post';
                                 postDetailsButton.addEventListener('click', () => {
                                     location.href = `post-details.html?id=${post.id}`;
                                 })
